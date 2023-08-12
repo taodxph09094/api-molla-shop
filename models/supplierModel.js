@@ -1,0 +1,22 @@
+const mongoose = require("mongoose");
+const supplierSchema = new mongoose.Schema({
+  name: {
+    type: String,
+    required: [true, "Nhập tên hãng"],
+    trim: true,
+  },
+  address: {
+    type: String,
+    required: [true, "Nhập địa chỉ"],
+  },
+  user: {
+    type: mongoose.Schema.ObjectId,
+    ref: "User",
+    required: true,
+  },
+  createdAt: {
+    type: Date,
+    default: Date.now,
+  },
+});
+module.exports = mongoose.model("Supplier", supplierSchema);
